@@ -23,14 +23,14 @@
         {{!-- <span role="img" aria-label="money">💸</span> --}}
         <a href="/">Welcome to My Tech Blog!</a>
       </h1>
-      <nav>
+      <nav class="nav">
+         <a class="home" href="/">Home</a>
+         <a class="dashboard" href="/dashboard">Dashboard</a> 
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a class="home" href="/">Home</a>
-        <a class="dashboard" href="/dashboard">Dashboard</a> |
-        <button class="logout-button" id="logout">Logout</button>
+        <a class="btn" id="logout" href="/">Logout</a>
         {{else}}
-        <a href="/login">Login</a>
+        <a class="btn" id="login" href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
