@@ -1,8 +1,25 @@
 
-
-<section class="post">
-    {{#each posts as |post|}}
-        {{> post-info post}}
-    {{/each}}
-
-</section>
+{{#each posts as |post| }}
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Update</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">More</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" id="delete" href="/post/{{post.id}}">Delete</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">  {{{title}}}
+      <a href="/post/{{post.id}}">{{post.name}}</a></h2>
+      <p>Created by {{post.user.name}} on {{format_date format_time}}</p>
+    <h4 class="card-text">{{post.content}}</h4>
+    {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+  </div>
+</div>
+{{/each}}

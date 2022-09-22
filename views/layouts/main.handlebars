@@ -19,18 +19,19 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1>
+      <h3>
         {{!-- <span role="img" aria-label="money">💸</span> --}}
         <a href="/">Welcome to My Tech Blog!</a>
-      </h1>
+      </h3>
       <nav class="nav">
          <a class="home" href="/">Home</a>
          <a class="dashboard" href="/dashboard">Dashboard</a> 
+         <a class="signup" href="/signup">SignUp</a> 
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a class="btn" id="logout" href="/">Logout</a>
+        <a class="logout" id="logout" href="/">Logout</a>
         {{else}}
-        <a class="btn" id="login" href="/login">Login</a>
+        <a class="login" id="login" href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
@@ -51,6 +52,8 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
+  {{posts}}
 </body>
 
 </html>

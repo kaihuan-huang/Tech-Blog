@@ -1,7 +1,6 @@
 //EDIT
 async function editFormHandler(event) {
     event.preventDefault();
-
     const title = document.querySelector('input[name="post-title"]').value.trim();
     const content = document.querySelector('input[name="content"]').value.trim();
     console.log(title);
@@ -24,13 +23,13 @@ async function editFormHandler(event) {
       });
       
       if (response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/main/');
       } else {
         alert(response.statusText);
       }
 
 }
-document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+document.querySelector('#update').addEventListener('submit', editFormHandler);
 
 //DELETE
 async function deleteFormHandler(event) {
@@ -51,10 +50,10 @@ async function deleteFormHandler(event) {
       });
       
       if (response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/main/');
       } else {
         alert(response.statusText);
       }
 
 }
-document.querySelector('.delete-post-form').addEventListener('click', editFormHandler);
+document.querySelector('#delete').addEventListener('click', editFormHandler);
