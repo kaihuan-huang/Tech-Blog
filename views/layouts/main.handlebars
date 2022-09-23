@@ -26,12 +26,13 @@
       <nav class="nav">
          <a class="home" href="/">Home</a>
          <a class="dashboard" href="/dashboard">Dashboard</a> 
-         <a class="signup" href="/signup">SignUp</a> 
+        
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a class="logout" id="logout" href="/">Logout</a>
         {{else}}
         <a class="login" id="login" href="/login">Login</a>
+         <a class="signup" href="/signup">SignUp</a> 
         {{/if}}
       </nav>
     </header>
@@ -49,7 +50,7 @@
   </div>
 
   <!-- Render script for logged in users only -->
-  {{#if loggedIn}}
+  {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
 

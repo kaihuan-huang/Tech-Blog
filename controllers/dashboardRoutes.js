@@ -64,7 +64,7 @@ router.get("/", withAuth, (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      res.render("dashboard", { posts, log_in: true });
     })
     .catch((err) => {
       console.log(err);
@@ -101,15 +101,21 @@ router.get("/edit/:id", withAuth, (req, res) => {
       }
 
       const post = dbPostData.get({ plain: true });
-      res.render("edit-post", { post, loggedIn: true });
+      res.render("editPost", { 
+        layout: "main",
+        post, 
+        logged_in: req.session.user_id
+       });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
+
+
 router.get("/new", (req, res) => {
-  res.render("new-post");
+  res.render("createPost");
 });
 
 module.exports = router;

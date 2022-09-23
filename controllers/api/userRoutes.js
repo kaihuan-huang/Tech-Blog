@@ -57,14 +57,15 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   User.create({
     name: req.body.name,
+    email: req.body.email,
     password: req.body.password,
   })
 
     .then((dbUserData) => {
       req.session.save(() => {
-        req.session.id = dbUserData.id;
+        req.session.user_id = dbUserData.id;
         req.session.name = dbUserData.name;
-        req.session.loggedIn = true;
+        req.session.logged_in = true;
 
         res.json(dbUserData);
       });
@@ -77,18 +78,21 @@ router.post("/", (req, res) => {
 
 // create localhost:3001/api/user/login
 router.post("/login", (req, res) => {
+  console.log('req.body',req.body)
   User.findOne({
     where: {
-      name: req.body.name,
+      email: req.body.email,
     },
   })
     .then((dbUserData) => {
       if (!dbUserData) {
+        console.log('cannot find user')
         res
           .status(400)
           .json({ message: "Could not find a user with this name" });
         return;
       }
+      console.log('dbUserData',dbUserData)
       const validPassword = dbUserData.checkPassword(req.body.password);
 
       if (!validPassword) {
@@ -98,9 +102,9 @@ router.post("/login", (req, res) => {
         return;
       }
       req.session.save(() => {
-        req.session.id = dbUserData.id;
+        req.session.user_id = dbUserData.id;
         req.session.name = dbUserData.name;
-        req.session.loggedIn = true;
+        req.session.logged_in = true;
 
         res.json({
           user: dbUserData,
@@ -116,7 +120,7 @@ router.post("/login", (req, res) => {
 
 // create localhost:3001/api/user/logout
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });
