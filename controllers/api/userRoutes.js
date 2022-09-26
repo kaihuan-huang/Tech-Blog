@@ -1,121 +1,60 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const { User } = require("../../models");
 // const withAuth = require("../../utils/auth");
 
-// get localhost:3001/api/users
-router.get("/", (req, res) => {
-  //access User modle
-  User.findAll({
-    attributes: { exclude: ["password"] },
-  })
-    .then((dbUserData) => res.json(dbUserData))
-    .catch((err) => {
-      console.log(err)
-      res.status(400).json(err);
+//creat new user   localhost:3001/api/users
+router.post("/", async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
     });
-});
-
-// get localhost:3001/api/user/id
-router.get("/:id", (req, res) => {
-  //access User modle
-  User.findOne({
-    attributes: { exclude: ["password"] },
-    where: {
-      id: req.params.id,
-    },
-    include: [
-      {
-        model: Post,
-        attributes: ["id", "title", "content", "created_at"],
-      },
-      {
-        model: Comment,
-        attributes: ["id", "comment", "created_at"],
-        include: {
-          model: Post,
-          attributes: ["title"],
-        },
-      },
-      {
-        model: Post,
-        attributes: ["title"],
-      },
-    ],
-  })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "Could not find a user with this id" });
-        return;
-      }
-    })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
-});
-
-//creat user   localhost:3001/api/users
-router.post("/", (req, res) => {
-  User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  })
-
-    .then((dbUserData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.name = dbUserData.name;
-        req.session.logged_in = true;
-
-        res.json(dbUserData);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
 });
 
 // create localhost:3001/api/user/login
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   console.log('req.body',req.body)
-  User.findOne({
-    where: {
-      email: req.body.email,
-    },
-  })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        console.log('cannot find user')
-        res
-          .status(400)
-          .json({ message: "Could not find a user with this name" });
-        return;
-      }
-      console.log('dbUserData',dbUserData)
-      const validPassword = dbUserData.checkPassword(req.body.password);
-
-      if (!validPassword) {
-        res
-          .status(400)
-          .json({ message: "Incorrect password, please try again" });
-        return;
-      }
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.name = dbUserData.name;
-        req.session.logged_in = true;
-
-        res.json({
-          user: dbUserData,
-          message: "Login successful... ",
-        });
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+  try {
+    const userData = await User.findOne({
+      where: {
+        useremail: req.body.useremail,
+      },
     });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect username or password. Please try again" });
+      return;
+    }
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect username or password. Please try again" });
+      return;
+    }
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.logged_in = true;
+
+      console.log("userData", userData);
+      res.status(200).json({ user: userData, message: "You are logged in!" });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // create localhost:3001/api/user/logout
@@ -129,46 +68,46 @@ router.post('/logout', (req, res) => {
   }
 });
 
-//update localhost:3001/api/user/id
-router.put('/id', (req, res) => {
-  User.update(req.body, {
-    individualHooks: true,
-    where: {
-      id: req.params.id
-    }
-  }).then(dbUserData => {
-    console.log('dbUserData[0]',dbUserData[0])
-    if (!dbUserData[0]) {
-      res.status(404).json( {message: "Could not find a user with this id"});
-      return;
-    }
-    res.json(dbUserData);
-  }).catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+// //update localhost:3001/api/user/id
+// router.put('/id', (req, res) => {
+//   User.update(req.body, {
+//     individualHooks: true,
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(dbUserData => {
+//     console.log('dbUserData[0]',dbUserData[0])
+//     if (!dbUserData[0]) {
+//       res.status(404).json( {message: "Could not find a user with this id"});
+//       return;
+//     }
+//     res.json(dbUserData);
+//   }).catch(err => {
+//     console.log(err);
+//     res.status(500).json(err);
+//   });
 
-});
+// });
 
-//delete localhost:3001/api/user/id
-router.delete('/id', (req, res) => {
-  User.destroy({
-    where: {
-      id: req.params.id
-    }
-  }).then(dbUserData => {
-    console.log('dbUserData',dbUserData)
-    if (!dbUserData) {
-      res.status(404).json( {message: "Could not find a user with this id"});
-      return;
-    }
-    res.json(dbUserData);
-  }).catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+// //delete localhost:3001/api/user/id
+// router.delete('/id', (req, res) => {
+//   User.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(dbUserData => {
+//     console.log('dbUserData',dbUserData)
+//     if (!dbUserData) {
+//       res.status(404).json( {message: "Could not find a user with this id"});
+//       return;
+//     }
+//     res.json(dbUserData);
+//   }).catch(err => {
+//     console.log(err);
+//     res.status(500).json(err);
+//   });
 
-});
+// });
 module.exports = router;
 
 

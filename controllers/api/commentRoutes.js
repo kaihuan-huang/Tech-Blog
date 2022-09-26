@@ -1,44 +1,40 @@
 const router = require("express").Router();
-const { Comment } = require("../../models");
+const { Comment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // // localhost:3001/api/comments
-router.get("/", (req, res) => {
-  Comment.findAll({})
-    .then((dbCommentData) => res.json(dbCommentData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+router.get("/", async (req, res) => {
+  try {
+    const commentData = await Comment.findAll({
+      include: [User],
     });
-});
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
 
-router.get("/:id", (req, res) => {
-  Comment.findAll({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((dbCommentData) => res.json(dbCommentData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+    console.log(comments);
+    //need to change accroding to handlebar same for line 15
+    res.render("comments", {
+      comments,
+      layout: "dashboard",
+      logged_in: true,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 //create new comment
 // localhost:3001/api/comments
-router.post("/", withAuth, (req, res) => {
-  if (req.session) {
-    Comment.create({
-      comment: req.body.comment,
+router.post("/", withAuth, async (req, res) => {
+  try {
+    const addComment = await Comment.create({
+      comment_text: req.body.comment_text,
       post_id: req.body.post_id,
       user_id: req.session.user_id,
-    })
-      .then((dbCommentData) => res.json(dbCommentData))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-      });
+    });
+    res.json(addComment);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
@@ -89,4 +85,4 @@ router.post("/", withAuth, (req, res) => {
 //       res.status(500).json(err);
 //     });
 // });
-// module.exports = router;
+module.exports = router;
