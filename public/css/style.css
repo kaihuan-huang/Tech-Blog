@@ -3,10 +3,10 @@ html {
     position: relative;
   }
   
-  .container-fluid {
+  /* .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
-  }
+  } */
   .nav{
     margin-top: 25px;
     font-size: 12px;

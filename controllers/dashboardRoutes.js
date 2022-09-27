@@ -24,7 +24,8 @@ router.get('/', withAuth, async (req, res) => {
       const posts = postData.map((post) => post.get({ plain: true }));
 
       // Pass serialized data and session flag into template
-      res.render('allpost', {
+      res.render('', {
+        partials: "dashboardPost",
         layout: "dashboard",
         posts,
         logged_in: true,
@@ -35,18 +36,19 @@ router.get('/', withAuth, async (req, res) => {
   });
 
   router.get("/new", withAuth, (req, res) => {
-    res.render("newposts", {
+    res.render("editPost", {
       layout: "dashboard",
     });
   });
   
+
   router.get("/edit/:id", withAuth, async (req, res) => {
     try {
       const postData = await Post.findByPk(req.params.id);
       if (postData) {
         const post = postData.get({ plain: true });
         console.log(post);
-        res.render("editposts", {
+        res.render("main", {
           layout: "dashboard",
           post,
         });

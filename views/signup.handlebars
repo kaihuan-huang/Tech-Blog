@@ -1,23 +1,22 @@
-<div class="row">
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" id="signup" type="submit">signup</button>
-        {{!-- <button ><a class="btn btn-logIn" id="login"  href="/login">Log In</a></button> --}}
-      </div>
+
+<div class="col-4 py-2 my-2 rounded mx-auto d-block">
+    <form id="signup-form">
+        <h2>Sign up here:</h2>
+        <div class="mb-3">
+            <label for="username-signup" class="form-label">Username</label>
+            <input type="username" class="form-control" id="username-signup" aria-describedby="usernameHelp">
+        </div>
+         <div class="mb-3">
+            <label for="useremail-signup" class="form-label">Useremail</label>
+            <input type="useremail" class="form-control" id="useremail-signup" aria-describedby="useremailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="password-signup" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password-signup">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Me Up!</button>
+         <a class="btn btn-outline-primary me-1 login-form" href="/login" role="button">Log In Instead</a>
     </form>
-  </div>
 </div>
 
 <script src="/js/signup.js"></script>

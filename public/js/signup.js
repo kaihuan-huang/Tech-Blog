@@ -7,7 +7,7 @@ const signupFormHandler = async (event) => {
 
   // /api/user
   if (useremail && password) {
-    const response = await fetch("/api/user", {
+    const response = await fetch("/api/users", {
       method: "POST",
       body: JSON.stringify({
         username,
@@ -16,16 +16,11 @@ const signupFormHandler = async (event) => {
       }),
       headers: { "Content-Type": "application/json" },
     });
-    console.log(useremail, password);
+    console.log(username ,useremail, password);
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
       alert("Failed to signup");
-      // Swal.fire({
-      //   icon: "error",
-      //   title: "Oops...",
-      //   text: "Something went wrong!",
-      // });
     }
   }
 };
