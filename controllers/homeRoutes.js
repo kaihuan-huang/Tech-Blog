@@ -1,13 +1,12 @@
 const router = require("express").Router();
 
 //import from models folder
-const { Post, User } = require("../models");
+// const { Post, User } = require("../models");
 
 //Import cutom middleware
-const withAuth = require("../utils/auth");
 
-//Get all posts in homepage
-
+// The homeRoute no need withAuth, all the user can access in info  from homeRoute
+//let homepage.handelbars display in layouts: "main", the address is localhost:3001/
 router.get("/", async (req, res) => {
   try {
       res.render("homepage", {
@@ -38,6 +37,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+//let about.handelbars display in layouts: "main", the address is localhost:3001/about
 router.get("/about", async (req, res) => {
   try {
        res.render("about", {

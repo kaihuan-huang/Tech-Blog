@@ -1,19 +1,19 @@
-
-<section>
-    {{!-- <a href="/api/posts" class="back-to-dashboard"> &larr; back to dashboard</a> --}}
-  <h2 class="title">Create a new blog post!</h2><hr>
-
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">title:</label>
-      <input class="input" type="text" id="post-title" name="post-title" placeholder="insert blog title here"/>
-    </div>
-    <div>
-      <label for="post-content">content:</label>
-      <input class="textarea is-large" id="post-content" name="post-content"  placeholder="insert blog content here"/>
-    </div>
-    <button type="submit" class="btn">create post</button>
+<div class="col-4 py-2 my-2 rounded mx-auto d-block">
+  <div class="card-header">
+    <h2>What's New</h2>
+  </div>
+  <form id="new-post-form" class="card-body">
+    <label class="form-label" for="post-title">Title</label>
+    <input type="text" name="post-title" class="form-control" />
+    <label class="form-label" for="post-body">Content</label>
+    <textarea name="post-body" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <button type="submit" class="btn btn-primary mb-2">Create</button>
   </form>
-</section>
+</div>
+
+<div class="container text-center"><strong>Thanks for the contribution. </strong><br>
+  <img src="/images/code-a-pedia.png">
+</div>
+
 
 <script src="/js/new.js"></script>

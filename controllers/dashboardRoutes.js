@@ -26,7 +26,6 @@ router.get('/', withAuth, async (req, res) => {
       // Pass serialized data and session flag into template
       //will render from allpost page to dashboard
       res.render('allPost', {
-  
         layout: "dashboard",
         posts,
         logged_in: true,
@@ -36,20 +35,22 @@ router.get('/', withAuth, async (req, res) => {
     }
   });
 
+// localhost:3001/dashboard/new
+////let about.handelbars display in layouts: "main", the address is localhost:3001/about
   router.get("/new", withAuth, (req, res) => {
-    res.render("editPost", {
+    res.render("createPost", {
       layout: "dashboard",
     });
   });
   
-
+//    localhost:3001/dashboard/edit
   router.get("/edit/:id", withAuth, async (req, res) => {
     try {
       const postData = await Post.findByPk(req.params.id);
       if (postData) {
         const post = postData.get({ plain: true });
         console.log(post);
-        res.render("main", {
+        res.render("editPost", {
           layout: "dashboard",
           post,
         });

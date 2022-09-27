@@ -3,7 +3,8 @@ const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-//to Post  localhost:3001/api/posts  
+//to PostAll  localhost:3001/api/posts 
+//let allPost.handelbars display in layouts: "main"
 router.get("/", async (req, res) => {
   try {
      // Get all data
@@ -15,7 +16,7 @@ router.get("/", async (req, res) => {
     // Pass serialized data and session flag into template
       res.render("allPost", {
       posts,
-      layouts: "dashboard",
+      layouts: "main",
       logged_in: req.session.logged_in,
     });
   } catch (err) {
