@@ -1,6 +1,27 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+
+//to Post  localhost:3001/api/posts  
+router.get("/", async (req, res) => {
+  try {
+     // Get all data
+     const postData = await Post.findAll({
+      include: [User],
+    });
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+      res.render("allPost", {
+      posts,
+      layouts: "dashboard",
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 //create new post
 //   localhost:3001/api/posts

@@ -3,11 +3,11 @@ const loginFormHandler = async (event) => {
   
     // Collect values from the login form
     // const username = document.querySelector("#name-login").value.trim();
-    const useremail = document.querySelector('#email-login').value.trim();
+    const useremail = document.querySelector('#useremail-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
     if (useremail && password) {
-    const response = await fetch("/api/users", {
+    const response = await fetch("/api/user", {
       method: "POST",
       body: JSON.stringify({
         // username,

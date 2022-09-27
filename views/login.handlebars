@@ -1,22 +1,17 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
-
-    <form class="form" id="login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" id="login-btn" type="submit">login</button>
-        {{!-- <button ><a class="btn btn-signUp" href="/signup">Sign Up</a></button> --}}
-      </div>
+<div class="col-4 py-2 my-2 rounded mx-auto d-block">
+    <form id="login-form">
+        <h2>Login here:</h2>
+         <div class="mb-3">
+            <label for="useremail-login" class="form-label">Useremail</label>
+            <input type="useremail" class="form-control" id="useremail-login" aria-describedby="useremailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="password-login" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password-login">
+        </div>
+        <button type="submit" class="btn btn-primary">Log In!</button>
+         <a class="btn btn-outline-primary me-1 sigup-form" href="/signup" role="button">Create an Account</a>
     </form>
-  </div>
 </div>
 
 <script src="/js/login.js"></script>

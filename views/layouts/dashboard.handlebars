@@ -12,4 +12,55 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
+<body>
+  <!-- bootstrap navbar -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid justify-content-between">
+      <a class="navbar-brand" href="/">Tech-O-Pedia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/" href="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/About">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Post">Post</a>
+          </li>
+          <li class="nav-item"><a class="nav-link " href="/dashboard">Code-e</a></li>
+          {{#if logged_in}}
+          <li class="nav-item"><a class="nav-link " href="/dashboard/new">Contribute</a></li>
+          <a class="btn btn-outline-primary me-1" id="logout-link" href="#" role="button">Log Out</a>
+          {{else}}
+          <a class="btn btn-outline-primary me-1 login-form" href="/login" role="button">Log In</a>
+          </li>
+          <li>
+            <a class="btn btn-primary signup" href="/signup" role="button">Sign Up</a>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
 {{{body}}}
+
+
+<footer>
+  <div class="footer">
+    <p>Made with ❤️ by Kaihuan Huang</p>
+  </div>
+</footer>
+
+
+ <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+</html>
+

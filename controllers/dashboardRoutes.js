@@ -24,8 +24,9 @@ router.get('/', withAuth, async (req, res) => {
       const posts = postData.map((post) => post.get({ plain: true }));
 
       // Pass serialized data and session flag into template
-      res.render('', {
-        partials: "dashboardPost",
+      //will render from allpost page to dashboard
+      res.render('allPost', {
+  
         layout: "dashboard",
         posts,
         logged_in: true,
