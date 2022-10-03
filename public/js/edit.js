@@ -33,7 +33,7 @@ async function editFormHandler(event) {
   
   document
     .querySelector("#edit-post-form")
-    .addEventListener("submit", newFormhandler);
+    .addEventListener("click", editFormHandler);
   
   document
     .querySelector("#delete-btn")

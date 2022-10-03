@@ -32,17 +32,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/api/posts">Post</a>
           </li>
-          <li class="nav-item"><a class="nav-link " href="/api/posts">Code-e</a></li>
-          {{#if logged_in}}
+          <li class="nav-item"><a class="nav-link " href="/" >Code-e</a></li>
+          {{!-- {{#if logged_in}} --}}
           <li class="nav-item"><a class="nav-link " href="/dashboard/new">Contribute</a></li>
+          <li class="nav-item">
           <a class="btn btn-outline-primary me-1" id="logout-link" href="#" role="button">Log Out</a>
-          {{else}}
-          <a class="btn btn-outline-primary me-1 login-form" href="/login" role="button">Log In</a>
+          {{!-- {{else}} --}}
+          {{!-- <a class="btn btn-outline-primary me-1 login-form" href="/login" role="button">Log In</a>
           </li>
           <li>
             <a class="btn btn-primary signup" href="/signup" role="button">Sign Up</a>
-          </li>
-          {{/if}}
+          </li> --}}
+          {{!-- {{/if}} --}}
         </ul>
       </div>
     </div>
@@ -58,9 +59,9 @@
 
 
  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  {{!-- {{#if logged_in}} --}}
   <script src="/js/logout.js"></script>
-  {{/if}}
+  {{!-- {{/if}} --}}
 </body>
 </html>
 

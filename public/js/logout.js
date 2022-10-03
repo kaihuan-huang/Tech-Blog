@@ -13,5 +13,5 @@ const logoutFormHandler = async(event) =>{
 };
 
 document
-.querySelector('#logout')
+.querySelector('#logout-link')
 .addEventListener("click", logoutFormHandler);
