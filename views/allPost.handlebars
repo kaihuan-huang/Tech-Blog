@@ -8,11 +8,12 @@
       <h3>{{title}}</h3>
       <span><a class="card-header flex-row justify-space-between" href="/dashboard/edit/{{id}}">✍️</a> {{format_date createdAt}} </span>
        <pre>
-        <code class="language-js">
+        <text class="body">
           {{body}}
-        </code>
+        </text>
       </pre>
     </div>
   </div>
+  <span><a class="card-header flex-row justify-space-between" href="/dashboard/edit/{{id}}">✍️</a> {{format_date createdAt}} </span>
   {{/each}}
 </div>
