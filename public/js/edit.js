@@ -4,7 +4,7 @@ async function editFormHandler(event) {
 
     const post_id = document.querySelector('input[name="post-id"]').value.trim();
     const title = document.querySelector('input[name="post-title"]').value.trim();
-    const body = document.querySelector('input[name="post-body"]').value.trim();
+    const body = document.querySelector('textarea[name="post-body"]').value.trim();
     console.log(title);
     console.log(body);
 

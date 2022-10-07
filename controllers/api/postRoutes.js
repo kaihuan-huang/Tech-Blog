@@ -7,25 +7,28 @@ const withAuth = require('../../utils/auth');
 //to PostAll  localhost:3001/api/posts 
 //let allPost.handelbars display in layouts: "main"
 router.get("/", async (req, res) => {
+  console.log('postRoute =========')
   try {
      // Get all data
+     console.log('insideTry =========')
      const postData = await Post.findAll({
-      // include: [User],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]  
+      include: [User],
+      // include: [
+      //   {
+      //     model: Comment,
+      //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+      //     include: {
+      //       model: User,
+      //       attributes: ['username']
+      //     }
+      //   },
+      //   {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // ]  
     });
+    console.log('postData',postData);
     const posts = postData.map((post) => post.get({ plain: true }));
 
     // Pass serialized data and session flag into template
