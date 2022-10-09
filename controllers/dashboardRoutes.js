@@ -4,6 +4,7 @@ const { Post, User, Comment } = require('../models');
 
 const withAuth = require('../utils/auth');
 
+
 // const sequelize = require('../config/connection');
 //    localhost:3001/dashboard
 router.get('/', withAuth, async (req, res) => {

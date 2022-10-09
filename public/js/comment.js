@@ -2,7 +2,7 @@ const commentFormHandler = async (event) => {
   event.preventDefault();
 
   const comment = document
-    .querySelector('input[name="comment"]')
+    .querySelector('textarea[name="comment"]')
     .value.trim();
 
   if (comment) {
@@ -23,3 +23,18 @@ const commentFormHandler = async (event) => {
 document
   .querySelector(".comment-form")
   .addEventListener("submit", commentFormHandler);
+
+  //Delete comments
+  // const deleteComment = async () => {
+  //   const user_id = document.querySelector('input[name="user-id"]').value;
+  //   await fetch(`/api/post/${user_id}`, {
+  //     method: "DELETE",
+  //   });
+  
+  //   document.location.replace("/dashboard");
+  // };
+  
+  // document
+  //   .querySelector("#delete-btn")
+  //   .addEventListener("click", deleteClickHandler);
+  
