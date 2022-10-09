@@ -42,6 +42,27 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        Comment
+      ]
+    });
+    if(postData) {
+      const post = postData.get({ plain: true })
+      res.render("singlePost", {
+        post,
+        layouts: "dashboard",
+       // logged_in: req.session.logged_in,
+      });
+    }
+
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+})
 //create new post
 //   localhost:3001/api/posts
 router.post('/', withAuth, async (req, res) => {

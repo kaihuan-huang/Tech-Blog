@@ -1,6 +1,5 @@
 <br>
 <br>
-
 <div class="container">
   {{#each posts}}
   <div class="row">
@@ -15,7 +14,7 @@
         <div class="bg-white">
                     <div class="d-flex flex-row fs-12">
                         <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
-                        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1"><a href="/api/comments ">Comments</a></span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1"><a href="/api/comments/{{id}}">Comments</a></span></div>
                         <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
                         <div class="like p-2 cursor"><i class="fa fa-wrench"></i><span class="ml-1"><a href="/dashboard/edit/{{id}} "> Update</a> </span></div>
                     </div>
@@ -24,3 +23,8 @@
   </div>
   {{/each}}
 </div>
+{{!-- <div>
+  {{#each comments}}
+  {{comment_text}}
+  {{/each}}
+</div> --}}

@@ -3,7 +3,7 @@ const { Comment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // // localhost:3001/api/comments
-router.get("/", withAuth, async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const commentData = await Comment.findAll({
       include: [User],
@@ -14,6 +14,7 @@ router.get("/", withAuth, async (req, res) => {
     //need to change accroding to handlebar same for line 15
     res.render("createComment", {
       comments,
+      post_id: req.params.id,
       layout: "dashboard",
       logged_in: true,
     });
@@ -25,7 +26,7 @@ router.get("/", withAuth, async (req, res) => {
 
 //create new comment
 // localhost:3001/api/comments
-router.post("/", withAuth, async (req, res) => {
+router.post("/",  async (req, res) => {
   try {
     const addComment = await Comment.create({
       comment_text: req.body.comment_text,
