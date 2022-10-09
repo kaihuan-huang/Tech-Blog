@@ -21,7 +21,7 @@ const commentFormHandler = async (event) => {
 };
 
 document
-  .querySelector(".comment-form")
+  .querySelector(".comment")
   .addEventListener("submit", commentFormHandler);
 
   //Delete comments
