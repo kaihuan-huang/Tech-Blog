@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", withAuth,async (req, res) => {
   try {
     console.log('getPost');
     const postData = await Post.findByPk(req.params.id, {
@@ -41,7 +41,7 @@ router.get("/:id", async (req, res) => {
       res.render("singlePost", {
         post,
         layouts: "dashboard",
-       // logged_in: req.session.logged_in,
+       logged_in: req.session.logged_in,
       });
     }
 
