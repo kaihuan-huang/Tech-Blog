@@ -25,7 +25,12 @@ Post.init(
         model: 'user',
         key: 'id'
       }
-    }
+    },
+    like: {
+      type: DataTypes.INTEGER,
+        default:0,
+
+      }
   },
   {
     sequelize,

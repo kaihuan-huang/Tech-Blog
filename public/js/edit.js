@@ -8,7 +8,7 @@ async function editFormHandler(event) {
     console.log(title);
     console.log(body);
 
-    await fetch(`/api/post/${post_id}`, {
+    await fetch(`/api/posts/${post_id}`, {
       method: "PUT",
       body: JSON.stringify({
         title,
@@ -24,7 +24,7 @@ async function editFormHandler(event) {
   //Delete 
   const deleteClickHandler = async () => {
     const post_id = document.querySelector('input[name="post-id"]').value;
-    await fetch(`/api/post/${post_id}`, {
+    await fetch(`/api/posts/${post_id}`, {
       method: "DELETE",
     });
   

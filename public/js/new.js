@@ -7,7 +7,7 @@ const newFormHandler = async (event) => {
     .querySelector('textarea[name="post-body"]')
     .value.trim();
 
-  await fetch("/api/post", {
+  await fetch("/api/posts", {
     method: "POST",
     body: JSON.stringify({ title, body }),
     headers: { "Content-Type": "application/json" },

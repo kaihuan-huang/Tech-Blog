@@ -35,6 +35,7 @@ router.post("/",  async (req, res) => {
     });
     res.json(addComment);
   } catch (err) {
+    console.log('err',err);
     res.status(500).json(err);
   }
 });
