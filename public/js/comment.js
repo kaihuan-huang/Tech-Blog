@@ -14,9 +14,9 @@ const commentFormHandler = async (event) => {
       body: JSON.stringify({ post_id, comment }),
       headers: { "Content-Type": "application/json" },
     });
-
+    console.log('res',response);
     if (response.ok) {
-      document.location.reload();
+      document.location.href=" /posts/"+ post_id;
     } else {
       alert(response.statusText);
     }
@@ -24,7 +24,7 @@ const commentFormHandler = async (event) => {
 };
 
 document
-  .querySelector(".comment")
+  .querySelector(".comment-form")
   .addEventListener("submit", commentFormHandler);
 
 

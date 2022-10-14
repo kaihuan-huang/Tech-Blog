@@ -1,10 +1,14 @@
 <div> TESTING</div>
     <div class="singlePostComment">
+        {{!-- {{JSON.Stringify(comment_text)}} --}}
         {{post.body}}
-        {{comment_text}}
+        <div>
+    {{#each post.comments}}
+</div>
+    <p>{{comment_text}}</p>
+<div>
+    {{/each}}
+</div>
     </div>
-    <div>
-  {{#each comments}}
-  {{comment_text}}
-  {{/each}}
+ 
 </div>

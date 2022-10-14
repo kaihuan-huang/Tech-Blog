@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
      // Get all data
      console.log('insideTry =========')
      const postData = await Post.findAll({
-      include: [User],
+      include: [User, Comment]
     });
     console.log('postData',postData);
     const posts = postData.map((post) => post.get({ plain: true }));
@@ -27,8 +27,8 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-router.get("/:id", withAuth,async (req, res) => {
+//http://localhost:3000/posts/id
+router.get("/:id", async (req, res) => {
   try {
     console.log('getPost');
     const postData = await Post.findByPk(req.params.id, {
@@ -38,10 +38,11 @@ router.get("/:id", withAuth,async (req, res) => {
     });
     if(postData) {
       const post = postData.get({ plain: true })
+      //console.log('post', post);
       res.render("singlePost", {
         post,
         layouts: "dashboard",
-       logged_in: req.session.logged_in,
+      //  logged_in: req.session.logged_in,
       });
     }
 
