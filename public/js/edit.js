@@ -18,7 +18,8 @@ async function editFormHandler(event) {
         "Content-Type": "application/json",
       },
     });
-    document.location.replace("/dashboard");
+    // document.location.replace("/dashboard");
+    document.location.href=" /posts/"+ post_id;
   };
   
   //Delete 

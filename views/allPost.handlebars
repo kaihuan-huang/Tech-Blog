@@ -4,7 +4,10 @@
   {{#each posts}}
   <div class="row">
     <div class="card">
-      <h3>{{title}}</h3>
+      <h3 class="postTitle">
+        {{!-- <a href="/posts">{{title}}</a> --}}
+        {{title}}
+        </h3>
       <span>{{format_date createdAt}}</span>
        <pre>
         <text class="body">

@@ -1,14 +1,25 @@
-<div> TESTING</div>
+
     <div class="singlePostComment">
-        {{!-- {{JSON.Stringify(comment_text)}} --}}
+        {{post.title}}
         {{post.body}}
-        <div>
-    {{#each post.comments}}
-</div>
-    <p>{{comment_text}}</p>
-<div>
-    {{/each}}
-</div>
     </div>
- 
-</div>
+
+    {{#each post.comments}}
+
+    <p>{{comment_text}}</p>
+
+    {{/each}}
+
+  {{!-- <div class="carousel-inner">
+    <div class="carousel-item active">
+        <div class="carousel-caption d-none d-md-block" >
+        <h5> {{post.title}}</h5>
+        <p> {{post.body}}</p>
+      </div>
+      <img src="images/bg1.jpg" class="d-block w-100" alt="images/bg1.jpg">
+          {{#each post.comments}}
+
+    <p>{{comment_text}}</p>
+
+    {{/each}}
+    </div> --}}
