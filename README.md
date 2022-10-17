@@ -11,7 +11,7 @@
 * [Questions](#questions)
 
 ## Description
-Your challenge this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
+completely from scratch and deploy it to HerokuCMS-style blog site where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site . Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
 
 
@@ -62,8 +62,11 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 
 The following images demonstrate the web application's appearance and functionality in Insomnia & Draw.io:
 
-![insomnia](images/insomnia.png)
-![database](images/database.png)
+![singlePost.png](public/images/singlePost.png)
+![allPost.png](public/images/allPost.png)
+![addComments.png](public/images/addComments.png)
+![createNew.png](public/images/createNew.png)
+![Home.png](public/images/Home.png)
 
 
 ## Installation 
