@@ -26,11 +26,10 @@ Post.init(
         key: 'id'
       }
     },
-    // like: {
-    //   type: DataTypes.INTEGER,
-    //     default:0,
-
-    //   }
+    like: {
+      type: DataTypes.INTEGER,
+        default:0
+      }
   },
   {
     sequelize,

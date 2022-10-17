@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     // Pass serialized data and session flag into template
       res.render("allPost", {
       posts,
-      layouts: "main",
+      layouts: "dashboard",
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
   }
 });
 //http://localhost:3000/posts/id
-router.get("/:id", async (req, res) => {
+router.get("/:id",withAuth, async (req, res) => {
   try {
     console.log('getPost');
     const postData = await Post.findByPk(req.params.id, {

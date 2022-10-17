@@ -1,25 +1,30 @@
 
-    <div class="singlePostComment">
-        {{post.title}}
-        {{post.body}}
-    </div>
 
-    {{#each post.comments}}
-
-    <p>{{comment_text}}</p>
-
-    {{/each}}
-
-  {{!-- <div class="carousel-inner">
-    <div class="carousel-item active">
-        <div class="carousel-caption d-none d-md-block" >
-        <h5> {{post.title}}</h5>
-        <p> {{post.body}}</p>
+     <div>
+    <div>
+      <div class="carousel-caption " >
+        <h1>{{post.title}}</h1>
+        <h4>{{post.body}}</h4>
+        <br>
+                    <div class="d-flex flex-row fs-12">
+                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                          
+                    </div>
+                      <div>
+                            {{#each post.comments}}
+                            <p>{{comment_text}}</p>
+                            {{/each}}   
+                        </div>
+                </div>  
       </div>
-      <img src="images/bg1.jpg" class="d-block w-100" alt="images/bg1.jpg">
-          {{#each post.comments}}
+      <img src="https://picsum.photos/1028/600" class="d-block w-100" alt="images">
+    </div>
+    
 
-    <p>{{comment_text}}</p>
-
-    {{/each}}
-    </div> --}}
+   
+   
+   
+   
+    
