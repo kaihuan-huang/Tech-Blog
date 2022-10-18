@@ -58,17 +58,19 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 router.put('/like', withAuth, async (req, res) => {
+  console.log('/like')
+
   try {
     
-    const newPost = await Post.update(req.body, {
-      where: {
-        id: req.body.id,
-      },
-    });
+    const newPost = await Post.update({like: 1}, { where: { id: req.body.id  }});
 
     res.status(200).json(newPost);
   } catch (err) {
+    console.log('err',err)
+    
     res.status(400).json(err);
   }
 });
-  module.exports = router
+  module.exports = router;
+
+  

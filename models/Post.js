@@ -28,7 +28,8 @@ Post.init(
     },
     like: {
       type: DataTypes.INTEGER,
-        default:0
+        default:0,
+        
       }
   },
   {
