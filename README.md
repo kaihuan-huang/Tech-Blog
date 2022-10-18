@@ -16,6 +16,7 @@ Tech-O-Pedia is completely built from scratch and deploy it to Heroku, it's a CM
 
 
 - Deployed link: https://github.com/kaihuan-huang/Tech-Blog
+- Heroku: https://stormy-anchorage-90135.herokuapp.com/posts
 
 
 ## More details
