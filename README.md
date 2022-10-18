@@ -1,4 +1,4 @@
-# Tech-Blog
+# Tech-O-Pedia
 ![Github licence](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Table of Contents
@@ -11,7 +11,7 @@
 * [Questions](#questions)
 
 ## Description
-completely from scratch and deploy it to HerokuCMS-style blog site where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site . Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
+Tech-O-Pedia is completely built from scratch and deploy it to Heroku, it's a CMS-style blog site where developers can publish their blog posts and comment on other developers’ posts as well. Following the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
 
 
@@ -73,11 +73,11 @@ The following images demonstrate the web application's appearance and functional
 The user should clone the repository from GitHub and download Node. 
 Run `npm i ` to install.
 Run `npm run seed ` to run the database.
-Run `npm start ` to start the Note-Taker-App.
+Run `npm start ` to start the Tech-O-Pedia.
 
 ## Usage 
 Use inquirer from your command line to answer questions about your project.
-View walk through video here - [E-COMMERCE-WEB-ORM-](https://youtu.be/rsbBu2DZqPY)<br>
+View walk through video here - [Tech-O-Pedia](https://youtu.be/bEumSy552Qw)<br>
 
 
 ## Contributing 
