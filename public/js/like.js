@@ -1,24 +1,31 @@
 let likes = document.querySelectorAll(".likes")
 
-//const likeBtn = document.querySelectorAll('.likeBtn')
+// const likeNum = document.querySelectorAll('#likeNum')
 
 
 const likeClickHandler = async(event) => {
     event.preventDefault();
     let id = event.target.id;
+    let likeNum = parseInt(event.target.nextElementSibling.innerHTML)
+
     console.log(id)
+    console.log(event.target.nextElementSibling.innerHTML)
 
 
-    await fetch(`/api/posts/like`, {
+// let likeNum = event.target.nextElementSibling()
+
+
+    await fetch(`/posts/like`, {
         method: "PUT",
         body: JSON.stringify({
-            id: id
-            
+            id: id,
+            like: likeNum + 1
         }),
         headers: {
           "Content-Type": "application/json",
         },
     });
+    document.location.reload()
 };
 
 [].forEach.call(likes, (like) => {

@@ -51,6 +51,22 @@ router.get("/:id",withAuth, async (req, res) => {
     console.log('err',err)
     res.status(500).json(err);
   }
-})
+});
+
+router.put('/like', async (req, res) => {
+  console.log('/like')
+
+  try {
+    
+    const newPost = await Post.update({like: req.body.like}, { where: { id: req.body.id  }});
+
+    res.status(200).json(newPost);
+   
+  } catch (err) {
+    console.log('err',err)
+    
+    res.status(400).json(err);
+  }
+});
 
 module.exports = router;
